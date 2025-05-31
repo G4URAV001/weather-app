@@ -29,8 +29,8 @@ const initialState: WeatherState = {
   error: null,
 };
 
-// OpenWeatherMap API key - this is a demo key, users should replace with their own
-const API_KEY = '213950697a65c32c0be0f51335c60413';
+// OpenWeatherMap API configuration
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 export const fetchWeatherData = createAsyncThunk(
@@ -38,6 +38,11 @@ export const fetchWeatherData = createAsyncThunk(
   async (city: string, { rejectWithValue }) => {
     try {
       console.log(`Fetching weather data for: ${city}`);
+      
+      // Check if API key is configured
+      if (!API_KEY) {
+        return rejectWithValue('Weather API key is not configured. Please add VITE_OPENWEATHER_API_KEY to your .env file.');
+      }
       
       // For demo purposes, return mock data since we don't have a real API key
       /*
@@ -79,9 +84,12 @@ export const fetchWeatherData = createAsyncThunk(
         feelsLike: Math.round(data.main.feels_like),
       };
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Weather API error:', error);
-      return rejectWithValue(error.response?.data?.message || 'Failed to fetch weather data');
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data?.message || 'Failed to fetch weather data');
+      }
+      return rejectWithValue('Failed to fetch weather data');
     }
   }
 );

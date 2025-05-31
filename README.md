@@ -37,12 +37,12 @@ cd weather-app
 npm install
 ```
 
-3. Start the development server:
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:8080`
+5. Open your browser and navigate to `http://localhost:8080`
 
 ## Available Scripts
 
@@ -70,13 +70,4 @@ src/
 
 ## API Integration
 
-This app uses weather APIs to fetch real-time weather data. Make sure to configure your API keys in the appropriate environment variables.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
+This app uses the OpenWeatherMap API to fetch real-time weather data. 
