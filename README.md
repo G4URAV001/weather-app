@@ -23,9 +23,6 @@ A modern weather application built with React, Redux, and TypeScript.
 
 ## Getting Started
 
-### Prerequisites
-
-Make sure you have Node.js installed on your machine. You can download it from [nodejs.org](https://nodejs.org/).
 
 ### Installation
 
@@ -83,6 +80,3 @@ This app uses weather APIs to fetch real-time weather data. Make sure to configu
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
